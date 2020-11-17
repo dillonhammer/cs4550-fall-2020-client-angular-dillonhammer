@@ -1,8 +1,10 @@
-<h1>Lesson List</h1>
+<h1>Lessons</h1>
 
-<ul>
-  <li *ngFor="let lesson of lessons">
+<ul class="nav nav-tabs">
+  <li *ngFor="let lesson of lessons" class="nav-item">
     <a
+      class="nav-link"
+      [ngClass]="{ active: lesson._id === lessonId }"
       href="courses/{{ this.courseId }}/modules/{{ this.moduleId }}/lessons/{{
         lesson._id
       }}/topics"

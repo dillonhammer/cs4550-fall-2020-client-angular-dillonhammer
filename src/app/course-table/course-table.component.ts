@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../services/CourseService';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Course from '../../constants/types';
 
 @Component({
@@ -13,6 +13,7 @@ export class CourseTableComponent implements OnInit {
   courseId: string = '';
 
   constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private service: CourseService
   ) {}
@@ -26,4 +27,8 @@ export class CourseTableComponent implements OnInit {
 
     this.service.fetchAllCourses().then((courses) => (this.courses = courses));
   }
+
+  selectCourse = (courseId: string) => {
+    this.router.navigate([`/courses/${courseId}/modules`]);
+  };
 }

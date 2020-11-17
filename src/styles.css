@@ -1,3 +1,13 @@
-* {
-  font-family: sans-serif;
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+.hover {
+  cursor: pointer;
+}
+
+.hover:hover {
+  background-color: lightblue;
+}
+
+.selected {
+  background-color: lightskyblue;
 }

@@ -6,6 +6,8 @@ const url = 'https://wbdv-generic-server.herokuapp.com/api/dillonhammer';
 export class CourseService {
   fetchAllCourses = () =>
     fetch(`${url}/courses`).then((response) => response.json());
+  fetchCourseById = (courseId: string) =>
+    fetch(`${url}/courses/${courseId}`).then((response) => response.json());
   fetchModulesForCourse = (courseId: string) =>
     fetch(`${url}/courses/${courseId}/modules`).then((response) =>
       response.json()

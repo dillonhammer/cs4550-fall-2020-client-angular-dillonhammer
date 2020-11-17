@@ -11,6 +11,7 @@ export class LessonTabsComponent implements OnInit {
   courseId: string = '';
   moduleId: string = '';
   lessons: Lesson[] = [];
+  lessonId: string = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,9 +30,12 @@ export class LessonTabsComponent implements OnInit {
       if (typeof params.moduleId !== 'undefined') {
         this.moduleId = params.moduleId;
       }
+      if (typeof params.lessonId !== 'undefined') {
+        this.lessonId = params.lessonId;
+      }
     });
 
-    this.refreshLessons(this.moduleId);
+    if (this.moduleId) this.refreshLessons(this.moduleId);
   }
 
   refreshLessons = (moduleId: string) => {

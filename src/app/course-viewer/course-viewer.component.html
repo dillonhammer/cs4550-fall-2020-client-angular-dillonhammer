@@ -1,14 +1,12 @@
-<a href="/">X</a>
+<a href="/"><h3>X</h3></a>
 
-<h1>Course Viewer</h1>
+<h1>{{ course && course.title }}</h1>
 
-<ul>
-  <li *ngFor="let course of courses" (click)="selectCourse(course._id)">
-    <a routerLink="/courses/{{ course._id }}/modules">
-      {{ course.title }}
-    </a>
-  </li>
-</ul>
-
-<app-module-list></app-module-list>
-<app-lesson-tabs></app-lesson-tabs>
+<div class="row">
+  <div class="col-4">
+    <app-module-list></app-module-list>
+  </div>
+  <div class="col-8">
+    <app-lesson-tabs></app-lesson-tabs>
+  </div>
+</div>

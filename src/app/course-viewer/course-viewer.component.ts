@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../services/CourseService';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Course from '../../constants/types';
 
 @Component({
@@ -9,7 +9,7 @@ import Course from '../../constants/types';
   styleUrls: ['./course-viewer.component.css'],
 })
 export class CourseViewerComponent implements OnInit {
-  courses: Course[] = [];
+  course: Course | null = null;
   courseId: string = '';
 
   constructor(
@@ -24,8 +24,10 @@ export class CourseViewerComponent implements OnInit {
       }
     });
 
-    this.service.fetchAllCourses().then((courses) => (this.courses = courses));
+    if (this.courseId) {
+      this.service
+        .fetchCourseById(this.courseId)
+        .then((course) => (this.course = course));
+    }
   }
-
-  selectCourse = (courseId: string): void => {};
 }

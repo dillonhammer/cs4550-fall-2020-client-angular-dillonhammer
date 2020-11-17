@@ -1,9 +1,18 @@
-<h1>Module List</h1>
-
-<ul>
-  <li *ngFor="let module of modules">
-    <a href="courses/{{ this.courseId }}/modules/{{ module._id }}/lessons">{{
-      module.title
-    }}</a>
-  </li>
-</ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Modules</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let module of modules"
+      class="hover"
+      [ngClass]="{ selected: module._id === this.moduleId }"
+    >
+      <td (click)="selectModule(module._id)">
+        {{ module.title }}
+      </td>
+    </tr>
+  </tbody>
+</table>
