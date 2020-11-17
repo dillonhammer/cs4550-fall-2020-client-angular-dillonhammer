@@ -3,16 +3,37 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+// import { CourseNavigatorComponent } from './course-navigator/course-navigator.component';
+import { FormsModule } from '@angular/forms';
+import { CourseService } from '../services/CourseService';
+// import {ModuleService} from '../services/module-service';
+import { CourseViewerComponent } from './course-viewer/course-viewer.component';
+import { CourseTableComponent } from './course-table/course-table.component';
+import { ModuleListComponent } from './module-list/module-list.component';
+import { LessonTabsComponent } from './lesson-tabs/lesson-tabs.component';
+// import { ModuleListComponent } from './module-list/module-list.component';
+// import { LessonTabsComponent } from './lesson-tabs/lesson-tabs.component';
+// import { TopicPilssComponent } from './topic-pilss/topic-pilss.component';
+// import { WidgetListComponent } from './widget-list/widget-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    // CourseNavigatorComponent,
+    CourseViewerComponent,
+    CourseTableComponent,
+    ModuleListComponent,
+    LessonTabsComponent,
+    // ModuleListComponent,
+    // LessonTabsComponent,
+    // TopicPilssComponent,
+    // WidgetListComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  providers: [
+    CourseService,
+    // ModuleService
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
