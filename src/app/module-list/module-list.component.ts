@@ -1,15 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CourseService } from 'src/services/CourseService';
+import Module from '../../constants/types';
 
 @Component({
   selector: 'app-module-list',
   templateUrl: './module-list.component.html',
-  styleUrls: ['./module-list.component.css']
+  styleUrls: ['./module-list.component.css'],
 })
 export class ModuleListComponent implements OnInit {
+  courseId: string = '';
+  modules: Module[] = [];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private service: CourseService
+  ) {
+    activatedRoute.url.subscribe((url) => {
+      if (this.courseId) this.refreshModules(this.courseId);
+    });
   }
 
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) => {
+      if (typeof params.courseId !== 'undefined') {
+        this.courseId = params.courseId;
+      }
+    });
+
+    this.refreshModules(this.courseId);
+  }
+
+  refreshModules = (courseId: string) => {
+    this.service
+      .fetchModulesForCourse(courseId)
+      .then((modules) => (this.modules = modules));
+  };
 }

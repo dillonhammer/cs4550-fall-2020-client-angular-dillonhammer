@@ -1,20 +1,14 @@
-<h1>Course Viewer {{ this.courseId }}</h1>
+<a href="/">X</a>
 
-<div class="row">
-  <div class="col-6">
-    <ul class="list-group">
-      <li
-        [ngClass]="{ active: course._id === this.courseId }"
-        class="list-group-item"
-        *ngFor="let course of courses"
-      >
-        <a routerLink="/courses/{{ course._id }}/modules">
-          {{ course.title }}
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
+<h1>Course Viewer</h1>
+
+<ul>
+  <li *ngFor="let course of courses" (click)="selectCourse(course._id)">
+    <a routerLink="/courses/{{ course._id }}/modules">
+      {{ course.title }}
+    </a>
+  </li>
+</ul>
 
 <app-module-list></app-module-list>
 <app-lesson-tabs></app-lesson-tabs>

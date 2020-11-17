@@ -13,13 +13,13 @@ export class CourseTableComponent implements OnInit {
   courseId: string = '';
 
   constructor(
-    private activateRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private service: CourseService
   ) {}
 
   ngOnInit(): void {
-    this.activateRoute.params.subscribe((params) => {
-      if (typeof params.courseId) {
+    this.activatedRoute.params.subscribe((params) => {
+      if (typeof params.courseId !== 'undefined') {
         this.courseId = params.courseId;
       }
     });

@@ -1,30 +1,17 @@
 import { Injectable } from '@angular/core';
-import Course from '../constants/types';
 
-const url =
-  'https://wbdv-generic-server.herokuapp.com/api/dillonhammer/courses';
+const url = 'https://wbdv-generic-server.herokuapp.com/api/dillonhammer';
 
 @Injectable()
 export class CourseService {
-  fetchAllCourses = () => fetch(url).then((response) => response.json());
-  createCourse = () =>
-    fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({ title: 'New Course' }),
-      headers: {
-        'content-type': 'application/json',
-      },
-    }).then((response) => response.json());
-  updateCourse = (course: Course) =>
-    fetch(`${url}/${course._id}`, {
-      method: 'PUT',
-      body: JSON.stringify(course),
-      headers: {
-        'content-type': 'application/json',
-      },
-    }).then((response) => response.json());
-  deleteCourse = (course: Course) =>
-    fetch(`${url}/${course._id}`, {
-      method: 'DELETE',
-    }).then((response) => response.json());
+  fetchAllCourses = () =>
+    fetch(`${url}/courses`).then((response) => response.json());
+  fetchModulesForCourse = (courseId: string) =>
+    fetch(`${url}/courses/${courseId}/modules`).then((response) =>
+      response.json()
+    );
+  fetchLessonsForModule = (moduleId: string) =>
+    fetch(`${url}/modules/${moduleId}/lessons`).then((response) =>
+      response.json()
+    );
 }

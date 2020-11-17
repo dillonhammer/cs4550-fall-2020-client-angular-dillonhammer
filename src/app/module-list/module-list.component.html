@@ -1,1 +1,9 @@
-<p>module-list works!</p>
+<h1>Module List</h1>
+
+<ul>
+  <li *ngFor="let module of modules">
+    <a href="courses/{{ this.courseId }}/modules/{{ module._id }}/lessons">{{
+      module.title
+    }}</a>
+  </li>
+</ul>
