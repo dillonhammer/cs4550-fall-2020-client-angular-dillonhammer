@@ -1,0 +1,49 @@
+<h4>{{ question.question }}</h4>
+<ul class="list-group">
+  <div *ngIf="this.grading">
+    <li class="list-group-item green">
+      <input
+        type="radio"
+        checked="{{ studentAnswer === 'true' ? 'checked' : '' }}"
+        disabled
+        name="{{ question._id }}"
+      />
+      TRUE
+    </li>
+  </div>
+  <div *ngIf="this.grading">
+    <li class="list-group-item red">
+      <input
+        type="radio"
+        checked="{{ studentAnswer === 'false' ? 'checked' : '' }}"
+        disabled
+        name="{{ question._id }}"
+      />
+      FALSE
+    </li>
+  </div>
+  <div *ngIf="!this.grading">
+    <li class="list-group-item">
+      <input
+        type="radio"
+        name="{{ question._id }}"
+        [(ngModel)]="studentAnswer"
+        [value]="'true'"
+      />
+      TRUE
+    </li>
+  </div>
+  <div *ngIf="!this.grading">
+    <li class="list-group-item">
+      <input
+        type="radio"
+        name="{{ question._id }}"
+        [(ngModel)]="studentAnswer"
+        [value]="'false'"
+      />
+      FALSE
+    </li>
+  </div>
+  <div>Your answer: {{ this.studentAnswer }}</div>
+  <button class="grade-button" (click)="grade()">Grade</button>
+</ul>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from 'src/services/CourseService';
-import Module from '../../constants/types';
+import { Module } from '../../constants/types';
 
 @Component({
   selector: 'app-module-list',

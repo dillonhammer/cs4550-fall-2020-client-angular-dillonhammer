@@ -1,0 +1,11 @@
+<h1>Quizzes</h1>
+
+<table class="table">
+  <tbody>
+    <tr class="hover" *ngFor="let quiz of quizzes">
+      <td (click)="selectQuiz(quiz._id)">
+        {{ quiz.title }}
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,13 @@
+.grade-button {
+  margin: 10px 0px;
+  background-color: lightgreen;
+  width: 100px;
+}
+
+.green {
+  background-color: lightgreen;
+}
+
+.red {
+  background-color: crimson;
+}

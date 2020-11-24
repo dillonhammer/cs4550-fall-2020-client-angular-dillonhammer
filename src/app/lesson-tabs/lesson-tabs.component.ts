@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CourseService } from 'src/services/CourseService';
-import Lesson from '../../constants/types';
+import { Lesson } from '../../constants/types';
 @Component({
   selector: 'app-lesson-tabs',
   templateUrl: './lesson-tabs.component.html',

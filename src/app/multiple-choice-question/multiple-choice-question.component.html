@@ -1,0 +1,55 @@
+<h4>{{ question.question }}</h4>
+<ul class="list-group">
+  <div *ngIf="!this.grading">
+    <div *ngFor="let choice of question.choices">
+      <li class="list-group-item">
+        <input
+          type="radio"
+          name="{{ question._id }}"
+          [(ngModel)]="studentAnswer"
+          [value]="choice"
+        />
+        {{ choice }}
+      </li>
+    </div>
+  </div>
+  <div *ngIf="this.grading">
+    <div *ngFor="let choice of question.choices">
+      <div *ngIf="choice === question.correct">
+        <li class="list-group-item green">
+          <input
+            type="radio"
+            name="{{ question._id }}"
+            disabled
+            checked="{{ studentAnswer === choice ? 'checked' : '' }}"
+          />
+          {{ choice }}
+        </li>
+      </div>
+      <div *ngIf="choice !== question.correct && choice === studentAnswer">
+        <li class="list-group-item red">
+          <input
+            type="radio"
+            name="{{ question._id }}"
+            disabled
+            checked="{{ studentAnswer === choice ? 'checked' : '' }}"
+          />
+          {{ choice }}
+        </li>
+      </div>
+      <div *ngIf="choice !== question.correct && choice !== studentAnswer">
+        <li class="list-group-item">
+          <input
+            type="radio"
+            name="{{ question._id }}"
+            disabled
+            checked="{{ studentAnswer === choice ? 'checked' : '' }}"
+          />
+          {{ choice }}
+        </li>
+      </div>
+    </div>
+  </div>
+  <div>Your answer: {{ this.studentAnswer }}</div>
+  <button class="grade-button" (click)="grade()">Grade</button>
+</ul>

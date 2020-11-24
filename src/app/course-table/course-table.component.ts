@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../../services/CourseService';
 import { ActivatedRoute, Router } from '@angular/router';
-import Course from '../../constants/types';
+import { Course } from '../../constants/types';
 
 @Component({
   selector: 'app-course-table',

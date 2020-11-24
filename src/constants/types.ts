@@ -1,4 +1,4 @@
-export default interface Course {
+export interface Course {
   _id: string;
   title: string;
   owner: string;
@@ -10,7 +10,7 @@ export default interface Course {
   __v: string;
 }
 
-export default interface Module {
+export interface Module {
   _id: string;
   title: string;
   _nuid: string;
@@ -22,7 +22,7 @@ export default interface Module {
   editing: boolean;
 }
 
-export default interface Lesson {
+export interface Lesson {
   _id: string;
   title: string;
   _nuid: string;
@@ -32,4 +32,19 @@ export default interface Lesson {
   _updatedAt: string;
   __v: string;
   editing: boolean;
+}
+
+export interface Quiz {
+  _id: string;
+  title: string;
+}
+
+export interface Question {
+  _id: string;
+  title: string;
+  quizId: string;
+  question: string;
+  correct: string;
+  type: 'TRUE_FALSE' | 'MULTIPLE_CHOICE';
+  choices: string[];
 }
