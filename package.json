@@ -2,7 +2,7 @@
   "name": "whiteboard-angular",
   "version": "0.0.0",
   "scripts": {
-    "preinstall": "npm install -g angular/cli@latest",
+    "preinstall": "npm install -g angular-cli@latest",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
