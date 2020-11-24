@@ -1,6 +1,6 @@
 <h4>{{ question.question }}</h4>
 <ul class="list-group">
-  <div *ngIf="this.grading">
+  <div *ngIf="this.grading && question.correct === 'true'">
     <li class="list-group-item green">
       <input
         type="radio"
@@ -11,8 +11,30 @@
       TRUE
     </li>
   </div>
-  <div *ngIf="this.grading">
+  <div *ngIf="this.grading && question.correct === 'false'">
     <li class="list-group-item red">
+      <input
+        type="radio"
+        checked="{{ studentAnswer === 'true' ? 'checked' : '' }}"
+        disabled
+        name="{{ question._id }}"
+      />
+      TRUE
+    </li>
+  </div>
+  <div *ngIf="this.grading && question.correct === 'true'">
+    <li class="list-group-item red">
+      <input
+        type="radio"
+        checked="{{ studentAnswer === 'false' ? 'checked' : '' }}"
+        disabled
+        name="{{ question._id }}"
+      />
+      FALSE
+    </li>
+  </div>
+  <div *ngIf="this.grading && question.correct === 'false'">
+    <li class="list-group-item green">
       <input
         type="radio"
         checked="{{ studentAnswer === 'false' ? 'checked' : '' }}"
