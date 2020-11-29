@@ -14,7 +14,14 @@ export class QuizListComponent implements OnInit {
   constructor(private router: Router, private service: QuizService) {}
 
   ngOnInit(): void {
-    this.service.fetchAllQuizzes().then((quizzes) => (this.quizzes = quizzes));
+    this.service
+      .fetchAllQuizzes()
+      .then(
+        (quizzes) =>
+          (this.quizzes = quizzes.sort(
+            (a: Quiz, b: Quiz) => parseInt(a._id) - parseInt(b._id)
+          ))
+      );
   }
 
   selectQuiz = (quizId: string) => {

@@ -17,3 +17,10 @@
   </li>
 </ul>
 <button (click)="submitQuiz()">Submit Quiz</button>
+
+<h3>Attempts</h3>
+<ul class="list-group">
+  <li *ngFor="let attempt of attempts" class="list-group-item">
+    Score: {{ attempt.score.toFixed(2) }}
+  </li>
+</ul>

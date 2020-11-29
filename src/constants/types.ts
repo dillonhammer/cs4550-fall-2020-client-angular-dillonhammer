@@ -49,3 +49,8 @@ export interface Question {
   type: 'TRUE_FALSE' | 'MULTIPLE_CHOICE';
   choices: string[];
 }
+
+export interface Attempt {
+  _id: string;
+  score: number;
+}

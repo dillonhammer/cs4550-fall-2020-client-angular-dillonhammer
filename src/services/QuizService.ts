@@ -12,4 +12,8 @@ export class QuizService {
     fetch(`${url}/quizzes/${quizId}/questions`).then((response) =>
       response.json()
     );
+  fetchQuizAttempts = (quizId: string) =>
+    fetch(`${url}/quizzes/${quizId}/attempts`).then((response) =>
+      response.json()
+    );
 }

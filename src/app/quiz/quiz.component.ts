@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuizService } from 'src/services/QuizService';
-import { Question } from '../../constants/types';
+import { Attempt, Question } from '../../constants/types';
 import { Quiz } from '../../constants/types';
 
 @Component({
@@ -13,6 +13,7 @@ export class QuizComponent implements OnInit {
   questions: Question[] = [];
   quizId: string = '';
   quiz: Quiz = { _id: '-1', title: 'Loading...' };
+  attempts: Attempt[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -28,6 +29,10 @@ export class QuizComponent implements OnInit {
       .fetchQuizQuestions(this.quizId)
       .then((questions) => (this.questions = questions));
     this.service.fetchQuizById(this.quizId).then((quiz) => (this.quiz = quiz));
+
+    this.service
+      .fetchQuizAttempts(this.quizId)
+      .then((attempts) => (this.attempts = attempts));
   }
 
   changeAnswer = (newAnswer: string, questionId: string) => {
@@ -44,6 +49,11 @@ export class QuizComponent implements OnInit {
       },
     })
       .then((response) => response.json())
-      .then((result) => console.log(result));
+      .then((result) => {
+        console.log(result);
+        this.service
+          .fetchQuizAttempts(this.quizId)
+          .then((attempts) => (this.attempts = attempts));
+      });
   };
 }
