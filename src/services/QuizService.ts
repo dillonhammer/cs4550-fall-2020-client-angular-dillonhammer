@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const url = 'http://localhost:3000/api';
+const url = 'https://boiling-brook-78204.herokuapp.com/api';
 
 @Injectable()
 export class QuizService {
