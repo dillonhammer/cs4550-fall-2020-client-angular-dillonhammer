@@ -45,6 +45,7 @@ export interface Question {
   quizId: string;
   question: string;
   correct: string;
+  answer: string;
   type: 'TRUE_FALSE' | 'MULTIPLE_CHOICE';
   choices: string[];
 }

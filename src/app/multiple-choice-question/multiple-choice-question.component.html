@@ -4,6 +4,7 @@
     <div *ngFor="let choice of question.choices">
       <li class="list-group-item">
         <input
+          (click)="submitAnswer(choice)"
           type="radio"
           name="{{ question._id }}"
           [(ngModel)]="studentAnswer"
@@ -51,5 +52,4 @@
     </div>
   </div>
   <div>Your answer: {{ this.studentAnswer }}</div>
-  <button class="grade-button" (click)="grade()">Grade</button>
 </ul>

@@ -5,12 +5,15 @@
     <div [ngSwitch]="question.type">
       <app-multiple-choice-question
         [question]="question"
+        (answerChange)="changeAnswer($event, question._id)"
         *ngSwitchCase="'MULTIPLE_CHOICE'"
       ></app-multiple-choice-question>
       <app-true-false-question
         [question]="question"
+        (answerChange)="changeAnswer($event, question._id)"
         *ngSwitchCase="'TRUE_FALSE'"
       ></app-true-false-question>
     </div>
   </li>
 </ul>
+<button (click)="submitQuiz()">Submit Quiz</button>

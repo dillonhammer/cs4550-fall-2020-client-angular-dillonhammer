@@ -29,4 +29,21 @@ export class QuizComponent implements OnInit {
       .then((questions) => (this.questions = questions));
     this.service.fetchQuizById(this.quizId).then((quiz) => (this.quiz = quiz));
   }
+
+  changeAnswer = (newAnswer: string, questionId: string) => {
+    const question = this.questions.find((q) => q._id === questionId);
+    if (question) question.answer = newAnswer;
+  };
+
+  submitQuiz = () => {
+    fetch(`http://localhost:3000/api/quizzes/${this.quizId}/attempts`, {
+      method: 'POST',
+      body: JSON.stringify(this.questions),
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => console.log(result));
+  };
 }
